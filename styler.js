@@ -10,7 +10,7 @@
 
         var _rules = {};
 
-        this.update = function()
+        _instance.update = function()
         {
             var stylesheet = "";
 
@@ -30,7 +30,7 @@
             _styleSheet.textContent = stylesheet;
         }
 
-        this.addRule = function(selector, rules)
+        _instance.addRule = function(selector, rules)
         {
             if(_rules[selector] == undefined)
             {
@@ -42,6 +42,5 @@
             }
         }
     }
-	
-	this.Styler = Styler;
+    this.Styler = Styler;
 })();
