@@ -1,8 +1,10 @@
 (function()
 {
-  var Styler = function()
+  var Styler = function(scope)
   {
     var _instance = this;
+    var _scope = scope || "";
+    _scope = _scope != "" ? _scope + " " : "";
 
     var _styleSheet = document.createElement("style");
 
@@ -32,6 +34,8 @@
 
     _instance.addRule = function(selector, rules)
     {
+      selector = _scope + selector;
+      
       if (_rules[selector] == undefined)
       {
         _rules[selector] = {};
