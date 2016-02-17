@@ -1,6 +1,6 @@
 (function()
 {
-  var Styler = function(scope)
+  var Stylo = function(scope)
   {
     var _instance = this;
     var _scope = scope || "";
@@ -35,7 +35,7 @@
     _instance.addRule = function(selector, rules)
     {
       selector = _scope + selector;
-      
+
       if (_rules[selector] == undefined)
       {
         _rules[selector] = {};
@@ -46,5 +46,5 @@
       }
     }
   }
-  this.Styler = Styler;
+  this.Stylo = Stylo;
 })();

@@ -1,0 +1,19 @@
+{
+  "name": "stylo",
+  "main": "stylo.js",
+  "version": "1.0.0",
+  "homepage": "https:/haykokoryun.github.io/stylo",
+  "authors": [
+    "Hayko Koryun <haykokoryun@gmail.com>"
+  ],
+  "description": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

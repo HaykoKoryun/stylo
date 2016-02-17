@@ -1,2 +1,2 @@
-styler
+stylo
 ======
