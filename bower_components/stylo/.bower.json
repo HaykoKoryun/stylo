@@ -1,0 +1,31 @@
+{
+  "name": "stylo",
+  "main": "stylo.js",
+  "version": "1.0.1",
+  "homepage": "https:/haykokoryun.github.io/stylo",
+  "authors": [
+    "Hayko Koryun <haykokoryun@gmail.com>"
+  ],
+  "description": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "randomcolor": "^0.4.4"
+  },
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.1",
+    "commit": "ab3081bb312508e82b461f758ab27bb84cd9839d"
+  },
+  "_source": "git://github.com/haykokoryun/stylo.git",
+  "_target": "^1.0.1",
+  "_originalSource": "stylo"
+}

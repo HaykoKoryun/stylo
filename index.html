@@ -2,40 +2,156 @@
 <html>
   <head>
     <title>Stylo</title>
+    <link href='https://fonts.googleapis.com/css?family=Marck+Script' rel='stylesheet' type='text/css'>
+    <link href='bower_components/prism/themes/prism-tomorrow.css' rel='stylesheet' type='text/css'>
     <style>
     html,body
     {
       margin: 0px;
       padding: 0px;
+      background-color: #c15bd6;
+      color: #fff;
+    }
+
+    #container
+    {
+      width: 800px;
+      margin: auto;
+    }
+
+    h1
+    {
+      font-family: 'Marck Script', cursive;
+      text-align: center;
+      color: #fff;
+      font-size: 100px;
+      line-height: 1.5em;
+      margin: 10px 0px;
+    }
+
+    blockquote
+    {
+      font-size: 20px;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      font-style: italic;
+      width: auto;
+      margin: 0.25em 0;
+      padding: 0.35em 40px;
+      line-height: 1.45;
+      position: relative;
+    }
+
+    blockquote:before
+    {
+      display: block;
+      padding-left: 10px;
+      content: "\201C";
+      font-size: 80px;
+      position: absolute;
+      left: -20px;
+      top: -20px;
+      color: #fff;
+    }
+
+    blockquote a
+    {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    blockquote cite
+    {
+      color: #fff;
+      font-size: 14px;
+      display: block;
+      margin-top: 5px;
+    }
+
+    blockquote cite:before
+    {
+      content: "\2014 \2009";
+    }
+
+    #simples
+    {
+      text-align: center;
+    }
+
+    #simples img
+    {
+      margin-top: 10px;
+    }
+
+    .description
+    {
+      font-size: 20px;
+    }
+
+    .description code
+    {
+      background-color: rgba(255,255,255,0.5);
+      color: #fff;
+      padding: 0px 10px;
     }
 
     #blocks
     {
       width: 800px;
       height: 800px;
-      margin: auto;
-      position: absolute;
-      left: 0px;
-      right: 0px;
-      top: 0px;
-      bottom: 0px;
     }
 
     .block
     {
       width: 10px;
       height: 10px;
-      border: solid 1px #ccc;
+      border: solid 1px rgba(255,255,255,0.4);
       box-sizing: border-box;
       float: left;
     }
     </style>
   </head>
   <body>
-    <div id="blocks">
+    <div id="container">
+      <h1>Stylo</h1>
+      <blockquote id="pitch">
+        <p>A micro library for updating styles for thousands of elements via a dynamically created/updated stylesheet (for <a href="https://jsperf.com/stylo/5/" target="_blank" title="jsperf">faster performance</a>), instead of applying inline styles to each element.
+        </p>
+      </blockquote>
+      <p class="description">
+        Below are 6,400 blocks with randomly assigned classes, from <code>a</code> to <code>g</code>. Clicking on the grid dynamically updates the <code>Stylo</code> stylesheet with a new set of randomly chosen colors for each class. This lets the browser take care of applying the correct style for each element rather than applying the correct styles individually for each element.
+      </p>
+      <div id="blocks">
+      </div>
+      <p class="description">
+        Using <code>Stylo</code> is simple, just create an instance, setup all your rules and then call the <code>update</code> function to update the <code>stylesheet</code>. See below for a slightly simplified version of the code that updates the grid.
+      </p>
+      <pre><code class="language-javascript">var _stylo = new Stylo();
+_stylo.addRule
+(
+  ".a",
+  {
+    "background-color" : "#fff"
+  }
+);
+_stylo.update();</code></pre>
+      <p class="description">
+        Which produces the following <code>css</code>:
+      </p>
+      <pre><code class="language-css">.a
+{
+  "background-color" : "#fff";
+}</code></pre>
+      <blockquote id="simples">
+        Simples!
+        <cite>Aleksandr Orlov</cite>
+        <img src="simples.png"/>
+      </blockquote>
     </div>
-    <script src="../bower_components/randomcolor/randomColor.js"></script>
-    <script src="../stylo.js"></script>
+    <script src="bower_components/randomcolor/randomColor.js"></script>
+    <script src="bower_components/stylo/stylo.js"></script>
+    <script src="bower_components/prism/prism.js"></script>
     <script>
       var blocks = document.getElementById("blocks");
 
