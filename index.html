@@ -1,6 +1,10 @@
 <!doctype html>
 <html>
   <head>
+    <meta property="og:url" content="http://haykokoryun.github.io/stylo/" />
+    <meta property="og:title" content="Stylo" />
+    <meta property="og:description" content="A micro library for updating styles for thousands of elements via a dynamically created/updated stylesheet (for fast performance), instead of applying inline styles to each element." />
+    <meta property="og:image" content="http://haykokoryun.github.io/stylo/fb-share.png" />
     <title>Stylo</title>
     <link href='https://fonts.googleapis.com/css?family=Marck+Script' rel='stylesheet' type='text/css'>
     <link href='bower_components/prism/themes/prism-tomorrow.css' rel='stylesheet' type='text/css'>
@@ -11,6 +15,7 @@
       padding: 0px;
       background-color: #c15bd6;
       color: #fff;
+      position: relative;
     }
 
     #container
@@ -110,13 +115,85 @@
       box-sizing: border-box;
       float: left;
     }
+
+    #mia
+    {
+      width: 25px;
+      height: 25px;
+      border-radius: 2px;
+      background-image: url(mia-25x25.png);
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      cursor: pointer;
+      color: #fff;
+      font-family: Georgia;
+    }
+
+    #mia .message
+    {
+      position: absolute;
+      right: 28px;
+      top: 0px;
+      width: 0px;
+      height: 100%;
+      overflow: hidden;
+      background-color: #b90000;
+      border-top-left-radius: 2px;
+      border-bottom-left-radius: 2px;
+      font-size: 12px;
+    }
+
+    #mia .message p
+    {
+      width: 190px;
+      text-align: center;
+      margin: 0px;
+      margin-top: 5px;
+    }
+
+    #mia.rollout .message
+    {
+      animation: rollout 2s forwards cubic-bezier(0, 0.99, 0.65, 1.02) 1;
+    }
+
+    #mia.rollin .message
+    {
+      animation: rollin 1s forwards cubic-bezier(0, 0.99, 0.65, 1.02) 1;
+    }
+
+    @keyframes rollout
+    {
+      0%
+      {
+        width: 0px;
+      }
+
+      100%
+      {
+        width: 195px;
+      }
+    }
+
+    @keyframes rollin
+    {
+      0%
+      {
+        width: 195px;
+      }
+
+      100%
+      {
+        width: 0px;
+      }
+    }
     </style>
   </head>
   <body>
     <div id="container">
       <h1>Stylo</h1>
       <blockquote id="pitch">
-        <p>A micro library for updating styles for thousands of elements via a dynamically created/updated stylesheet (for <a href="https://jsperf.com/stylo/5/" target="_blank" title="jsperf">faster performance</a>), instead of applying inline styles to each element.
+        <p>A micro library for updating styles for thousands of elements via a dynamically created/updated stylesheet (for <a href="https://jsperf.com/stylo/5/" target="_blank" title="jsperf">fast performance</a>), instead of applying inline styles to each element.
         </p>
       </blockquote>
       <p class="description">
@@ -148,6 +225,11 @@ _stylo.update();</code></pre>
         <cite>Aleksandr Orlov</cite>
         <img src="simples.png"/>
       </blockquote>
+    </div>
+    <div id="mia">
+      <div class="message">
+        <p>made with &#9829; in Armenia</p>
+      </div>
     </div>
     <script src="bower_components/randomcolor/randomColor.js"></script>
     <script src="bower_components/stylo/stylo.js"></script>
@@ -195,6 +277,34 @@ _stylo.update();</code></pre>
       randomise();
 
       blocks.addEventListener("click", randomise);
+
+      (function()
+      {
+        var id = -1;
+        var mia = document.getElementById("mia");
+
+        function rollout()
+        {
+          mia.classList.remove("rollin");
+          mia.classList.add("rollout");
+
+          if(id != -1)
+          {
+            clearTimeout(id);
+            id = -1;
+          }
+
+          id = setTimeout(rollin, 5000);
+        }
+
+        function rollin()
+        {
+          mia.classList.remove("rollout");
+          mia.classList.add("rollin");
+        }
+
+        mia.addEventListener("click", rollout);
+      })();
     </script>
   </body>
 </html>
