@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Stylo</title>
+    <style>
+    html,body
+    {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #blocks
+    {
+      width: 800px;
+      height: 800px;
+      margin: auto;
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
+    }
+
+    .block
+    {
+      width: 10px;
+      height: 10px;
+      border: solid 1px #ccc;
+      box-sizing: border-box;
+      float: left;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="blocks">
+    </div>
+    <script src="../bower_components/randomcolor/randomColor.js"></script>
+    <script src="../stylo.js"></script>
+    <script>
+      var blocks = document.getElementById("blocks");
+
+      var classes = ["a","b","c","d","e","f","g"];
+
+      for(var i = 0; i < 6400; ++i)
+      {
+        var block = document.createElement("div");
+        block.classList.add("block");
+        block.classList.add
+        (
+          classes
+          [
+            Math.round
+            (
+              Math.random() * (classes.length - 1)
+            )
+          ]
+        );
+        blocks.appendChild(block);
+      }
+
+      var _stylo = new Stylo();
+
+      function randomise()
+      {
+        for(var i = 0; i < classes.length; ++i)
+        {
+          _stylo.addRule
+          (
+            "." + classes[i],
+            {
+              "background-color" : randomColor()
+            }
+          );
+        }
+
+        _stylo.update();
+      }
+
+      randomise();
+
+      blocks.addEventListener("click", randomise);
+    </script>
+  </body>
+</html>
