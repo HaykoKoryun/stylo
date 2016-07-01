@@ -18,7 +18,18 @@
 
       for (var selector in _rules)
       {
-        stylesheet += selector + "{";
+        var scoped = "";
+
+        if(_scope != "")
+        {
+          scoped = _scope + selector.replace(",","," + _scope);
+        }
+        else
+        {
+          scoped = selector;
+        }
+
+        stylesheet += scoped + "{";
         var rules = _rules[selector];
 
         for (var prop in rules)
@@ -34,8 +45,6 @@
 
     _instance.addRule = function(selector, rules)
     {
-      selector = _scope + selector;
-
       if (_rules[selector] == undefined)
       {
         _rules[selector] = {};
