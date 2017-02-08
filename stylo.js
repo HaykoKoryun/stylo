@@ -3,8 +3,7 @@
   var Stylo = function(scope)
   {
     var _instance = this;
-    var _scope = scope || "";
-    _scope = _scope != "" ? _scope + " " : "";
+    var _scope = scope != "" ? scope + " " : "";
 
     var _styleSheet = document.createElement("style");
 
@@ -55,5 +54,6 @@
       }
     }
   }
+  
   this.Stylo = Stylo;
 })();

@@ -1,0 +1,8 @@
+{
+  "name": "stylo",
+  "version": "2.0.0",
+  "main": "stylo.js",
+  "repository": "https://github.com/HaykoKoryun/stylo.git",
+  "author": "HaykoKoryun",
+  "license": "MIT"
+}
